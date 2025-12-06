@@ -7,36 +7,9 @@ import { defineConfig } from "vite";
 const plugins = [react(), tailwindcss()];
 
 export default defineConfig({
-  plugins,
-  resolve: {
-    alias: {
-      "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
-    },
-  },
-  envDir: path.resolve(import.meta.dirname),
-  root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true,
-    sourcemap: false,
-  },
-  server: {
-    port: 3000,
-    strictPort: false,
-    host: true,
-    allowedHosts: [
-      ".saas.computer",
-      ".noesised.computer",
-      ".noesis.computer",
-      ".noesis.ai",
-      "localhost",
-      "127.0.0.1",
-    ],
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
-  },
-});
+    rollupOptions: {
+      external: ['server/index.ts']
+    }
+  }
+})
