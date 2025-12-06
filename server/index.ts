@@ -1,25 +1,31 @@
-import express, { Request, Response } from 'express';
-import path from 'path';
+import express from "express";
+import { createServer } from "http";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.use(express.json());
+async function startServer() {
+  const app = express();
+  const server = createServer(app);
 
-app.get('/api/status', (req: Request, res: Response) => {
-  res.json({ message: 'API is running successfully!' });
-});
+  const staticPath =
+    process.env.NODE_ENV === "production"
+      ? path.resolve(__dirname, "public")
+      : path.resolve(__dirname, "..", "dist", "public");
 
-const rootDir = path.resolve(__dirname, '..'); 
-const frontendDir = path.join(rootDir, 'dist', 'public');
+  app.use(express.static(staticPath));
 
-app.use(express.static(frontendDir));
+  app.get("*", (_req, res) => {
+    res.sendFile(path.join(staticPath, "index.html"));
+  });
 
-app.get('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(frontendDir, 'index.html'));
-});
+  const port = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
-  console.log(`Serving files from: ${frontendDir}`);
-});
+  server.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}/`);
+  });
+}
+
+startServer().catch(console.error);
