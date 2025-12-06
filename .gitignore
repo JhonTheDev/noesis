@@ -1,4 +1,4 @@
-# Dependencies
+﻿# Dependencies
 **/node_modules
 .pnpm-store/
 
@@ -45,11 +45,9 @@ pids
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
+# Coverage and test output
 coverage/
 *.lcov
-
-# nyc test coverage
 .nyc_output
 
 # Dependency directories
@@ -58,13 +56,13 @@ jspm_packages/
 # TypeScript cache
 *.tsbuildinfo
 
-# Optional npm cache directory
+# Optional npm cache
 .npm
 
 # Optional eslint cache
 .eslintcache
 
-# Microbundle cache
+# Build/tool caches
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
@@ -79,17 +77,13 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# parcel-bundler cache (https://parceljs.org/)
+# Parcel / bundler cache
 .cache
 .parcel-cache
 
-# Next.js build output
+# Next / Nuxt / Gatsby build outputs
 .next
-
-# Nuxt.js build / generate output
 .nuxt
-
-# Gatsby files
 .cache/
 
 # Storybook build outputs
@@ -100,7 +94,17 @@ jspm_packages/
 tmp/
 temp/
 
-# Database
+# Database files
 *.db
 *.sqlite
 *.sqlite3
+
+# Local lockfile
+package-lock.json
+
+# Local/development directories (project-specific)
+deprecated/
+shared/
+server/
+patches/
+contexts/

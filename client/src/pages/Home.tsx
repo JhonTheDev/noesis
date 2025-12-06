@@ -1,25 +1,26 @@
 import { Button } from "@/components/ui/button";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { motion } from "framer-motion";
+import { FileText, Brain, Video, Calendar, Clock, BarChart2 } from "lucide-react";
 
 export default function Home() {
   const cortexFeatures = [
     {
-      icon: "📄",
+      icon: <FileText className="w-6 h-6 text-white" />,
       title: "Resumos Inteligentes",
       description: "Condense qualquer material em resumos claros e objetivos, mantendo os pontos essenciais.",
       gradient: "from-cyan-400 to-blue-500",
       glow: "cyan"
     },
     {
-      icon: "🧠",
+      icon: <Brain className="w-6 h-6 text-white" />,
       title: "Mapas Mentais Automáticos",
       description: "Visualize conexões entre conceitos com mapas mentais gerados automaticamente pela IA.",
       gradient: "from-purple-400 to-magenta-500",
       glow: "purple"
     },
     {
-      icon: "🎥",
+      icon: <Video className="w-6 h-6 text-white" />,
       title: "Transcrição de Vídeos",
       description: "Transforme aulas em vídeo em textos estruturados e pesquisáveis instantaneamente.",
       gradient: "from-pink-400 to-purple-500",
@@ -29,21 +30,21 @@ export default function Home() {
 
   const atlasFeatures = [
     {
-      icon: "📅",
+      icon: <Calendar className="w-6 h-6 text-white" />,
       title: "Agenda Inteligente",
       description: "Planeje seus estudos com uma agenda que se adapta ao seu ritmo e prioridades.",
       gradient: "from-pink-400 to-red-500",
       glow: "pink"
     },
     {
-      icon: "⏱️",
+      icon: <Clock className="w-6 h-6 text-white" />,
       title: "Rotinas Personalizadas",
       description: "Crie e mantenha rotinas de estudo otimizadas para máxima retenção e produtividade.",
       gradient: "from-blue-400 to-cyan-500",
       glow: "cyan"
     },
     {
-      icon: "📊",
+      icon: <BarChart2 className="w-6 h-6 text-white" />,
       title: "Acompanhamento de Progresso",
       description: "Visualize sua evolução com métricas e insights sobre seu desempenho ao longo do tempo.",
       gradient: "from-green-400 to-emerald-500",
@@ -131,7 +132,7 @@ export default function Home() {
               {cortexFeatures.map((feature, index) => (
                 <ScrollAnimation key={index} delay={index * 100}>
                   <div className="group backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-cyan-400/50 transition-all hover:shadow-2xl hover:shadow-cyan-500/20 transform hover:scale-105 duration-300">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl`}>
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                       {feature.icon}
                     </div>
                     <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
@@ -163,7 +164,7 @@ export default function Home() {
               {atlasFeatures.map((feature, index) => (
                 <ScrollAnimation key={index} delay={index * 100}>
                   <div className="group backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-cyan-400/50 transition-all hover:shadow-2xl hover:shadow-cyan-500/20 transform hover:scale-105 duration-300">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl`}>
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                       {feature.icon}
                     </div>
                     <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
@@ -302,4 +303,3 @@ export default function Home() {
     </div>
   );
 }
-
